@@ -7,6 +7,7 @@ export interface User{
         street?: string,
         city?: string,
         postalCode?: number
-    }
+    },
+    image?:string
 }
 

@@ -11,7 +11,7 @@ export class UsersComponent implements OnInit {
   users:User[];
   showExtended: boolean = true;
   loaded : boolean = false;
-
+  enableAdd : true;
   constructor() { }
 
   ngOnInit(){
@@ -21,13 +21,14 @@ export class UsersComponent implements OnInit {
         {
           firstName:"John",
           lastName:"Doe",
-          nickName :"Alen",
+          nickName :"Allen",
           age:30,
           userAddress:{
             street:"206/3/A Rayer Bazar, Dhaka -1209",
             city:'Dhaka',
             postalCode:1209
-          }
+          },
+          image:"http://lorempixel.com/600/600/people/3"
         },
         {
           firstName:"Alex",
@@ -38,7 +39,8 @@ export class UsersComponent implements OnInit {
             street:"206/3/A Rayer Bazar, NY -1209",
             city:'NY',
             postalCode:1209
-          }
+          },
+          image:"http://lorempixel.com/600/600/people/3"
         },
         {
           firstName:"Mark",
@@ -49,14 +51,22 @@ export class UsersComponent implements OnInit {
             street:"206/3/A Rayer Bazar, Aus -1209",
             city:'Aus',
             postalCode:1209
-          }
+          },
+          image:"http://lorempixel.com/600/600/people/3"
         }
       ];
       this.addUser(
         {
           firstName:"Mr.",
           lastName:"Kudvenkat",
-          nickName :"Chakrabarti"
+          nickName :"Chakrabarti",
+          age:38,
+          userAddress:{
+            street:"205 Dhanmondi-1207",
+            city:'Dhaka',
+            postalCode:1207
+          },
+          image:"http://lorempixel.com/600/600/people/3"
         }
       );
 
