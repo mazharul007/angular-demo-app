@@ -9,9 +9,11 @@ import { User } from 'src/app/model/user';
 export class UsersComponent implements OnInit {
 
   users:User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded : boolean = false;
-  enableAdd : true;
+  enableAdd :boolean= true;
+  currentClasses:{};
+  currentStyles:{};
   constructor() { }
 
   ngOnInit(){
@@ -21,14 +23,15 @@ export class UsersComponent implements OnInit {
         {
           firstName:"John",
           lastName:"Doe",
-          nickName :"Allen",
+          nickName :"Alleen",
           age:30,
           userAddress:{
             street:"206/3/A Rayer Bazar, Dhaka -1209",
             city:'Dhaka',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3"
+          image:"http://lorempixel.com/600/600/people/3",
+          isActive:true
         },
         {
           firstName:"Alex",
@@ -40,7 +43,8 @@ export class UsersComponent implements OnInit {
             city:'NY',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3"
+          image:"http://lorempixel.com/600/600/people/3",
+          isActive:true
         },
         {
           firstName:"Mark",
@@ -48,11 +52,12 @@ export class UsersComponent implements OnInit {
           nickName :"Zampa",
           age:28,
           userAddress:{
-            street:"206/3/A Rayer Bazar, Aus -1209",
+            street:"206/3/A Rayer Bazar, Aus -11209",
             city:'Aus',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3"
+          image:"http://lorempixel.com/600/600/people/3",
+          isActive:true
         }
       ];
       this.addUser(
@@ -62,18 +67,21 @@ export class UsersComponent implements OnInit {
           nickName :"Chakrabarti",
           age:38,
           userAddress:{
-            street:"205 Dhanmondi-1207",
+            street:"205 Dhanmondi-12073",
             city:'Dhaka',
             postalCode:1207
           },
-          image:"http://lorempixel.com/600/600/people/3"
+          image:"http://lorempixel.com/600/600/people/3",
+          isActive:true
         }
       );
 
       this.loaded = true;
     },2000);
     
+    this.setCurrentClasses();
      //this.showExtended = false;
+    this.setCurrentStyles();
   }  
 
      //addUser Method
@@ -81,5 +89,17 @@ export class UsersComponent implements OnInit {
       this.users.push(user)
     }
 
+    setCurrentClasses(){
+      this.currentClasses={
+        'btn-primary':this.enableAdd,
+        'big-text': this.showExtended
+      }
+    }
+
+    setCurrentStyles(){
+      this.currentStyles={
+        'padding-top' : this.showExtended ? '0' :'100px'
+      }
+    }
    
 }
