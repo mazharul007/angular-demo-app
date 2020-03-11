@@ -9,11 +9,14 @@ import { User } from 'src/app/model/user';
 export class UsersComponent implements OnInit {
 
   users:User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded : boolean = false;
   enableAdd :boolean= true;
   currentClasses:{};
   currentStyles:{};
+  toggleClass:{};
+  showUserForm:boolean = false;
+
   constructor() { }
 
   ngOnInit(){
@@ -30,8 +33,11 @@ export class UsersComponent implements OnInit {
             city:'Dhaka',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3",
-          isActive:true
+          // image:"http://lorempixel.com/600/600/people/3",
+          isActive:true,
+          // balance:100,
+          joinedDate:new Date('01/03/2020'),
+          hide:true
         },
         {
           firstName:"Alex",
@@ -43,8 +49,11 @@ export class UsersComponent implements OnInit {
             city:'NY',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3",
-          isActive:true
+          // image:"http://lorempixel.com/600/600/people/3",
+          isActive:true,
+          // balance:100,
+          joinedDate:new Date('01/03/2020'),
+          hide:true
         },
         {
           firstName:"Mark",
@@ -56,8 +65,11 @@ export class UsersComponent implements OnInit {
             city:'Aus',
             postalCode:1209
           },
-          image:"http://lorempixel.com/600/600/people/3",
-          isActive:true
+          // image:"http://lorempixel.com/600/600/people/3",
+          isActive:true,
+          // balance:100,
+          joinedDate:new Date('08/01/2020'),
+          hide:true
         }
       ];
       this.addUser(
@@ -71,8 +83,11 @@ export class UsersComponent implements OnInit {
             city:'Dhaka',
             postalCode:1207
           },
-          image:"http://lorempixel.com/600/600/people/3",
-          isActive:true
+          // image:"http://lorempixel.com/600/600/people/3",
+          isActive:true,
+          // balance:100,
+          joinedDate:new Date('10/02/2020'),
+          hide:true
         }
       );
 
@@ -95,11 +110,22 @@ export class UsersComponent implements OnInit {
         'big-text': this.showExtended
       }
     }
-
     setCurrentStyles(){
       this.currentStyles={
-        'padding-top' : this.showExtended ? '0' :'100px'
+        'padding-bottom' : this.showExtended ? '0px' :'50px',
+        'font-size': this.showExtended ? '10px' : '20px',
+        'color':this.showExtended ? 'maroon' : 'forestgreen'
       }
     }
    
+    
+
+    // toggleHide(user:User){
+    //   user.hide = !user.hide;
+    // }
+
+  onSubmit(e){
+    e.preventDefault();
+    console.log(123);
+  }
 }

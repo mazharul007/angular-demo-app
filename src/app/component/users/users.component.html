@@ -1,26 +1,57 @@
+<button class="btn btn-success mb-3" (click)="showUserForm=!showUserForm">Add User</button>
+<div class="card card-body mb-3" *ngIf="showUserForm">
+    <h2>Add User</h2>
+   <div class="row">
+       <div class="col-md-6">
+        <form (submit)="onSubmit($event)">
+            <div class="form-group">
+                <label>First Name</label>
+                <input class="form-control" name="firstName">
+                <label>Last Name</label>
+                <input class="form-control" name="lastName">
+                <label>Nick Name</label>
+                <input class="form-control" name="nickName">
+                <Label>Age</Label>
+                <input type="number" class="form-control" name="age">
+                <label>Address</label>
+                <input class="form-control" name="address">
+                <label>Date of joining</label>
+                <input type="date" class="form-control" name="dateOfJoining">
+            </div>
+            <button (click)="addUser({firstName:'Mohammad',lastName:'Mazharul',nickName:'Hoque'})" class="btn   mb-3"
+            [ngClass]="currentClasses">SUBMIT</button>
+        </form>
+       </div>
+   </div>
+</div>
 <h3>Users</h3>
-<button class="btn   mb-3" [ngClass]="currentClasses">Add User</button>
 
-<ul class="list-unstyled" *ngIf ="loaded && users?.length > 0" >
+
+<ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
 
     <li class="card card-body mb-2" *ngFor="let user of users" [style.border-color]="user.isActive ?'green':''">
         <div class="row">
-            <div class="col-sm-4">
+            <!-- <div class="col-sm-4">
                 <img [src] = "user.image" alt="" class="img-fluid">
-            </div>
-            <div class="col-sm-8">
-                <h6 [ngStyle]="currentStyles"> {{user.firstName}} {{user.lastName}} {{user.nickName}}</h6>
-                <ul  class="list-group" *ngIf="showExtended && user.age && user.userAddress">
+            </div> -->
+            <div class="col-sm-12">
+                <h6 [ngStyle]="currentStyles"> {{user.firstName | uppercase}} {{user.lastName | uppercase}}
+                    {{user.nickName | uppercase}} <small><button
+                            (click)="user.hide = !user.hide" class="btn btn-dark btn-sm"><i
+                                [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h6>
+                <ul class="list-group" *ngIf="!user.hide && user.age && user.userAddress">
                     <li class="list-group-item">Age: {{user.age}}</li>
-                    <li class="list-group-item">Address: {{user.userAddress.street}} {{user.userAddress.city}} {{user.userAddress.postalCode}}</li>
+                    <li class="list-group-item">Address: {{user.userAddress.street}} {{user.userAddress.city}}
+                        {{user.userAddress.postalCode}}</li>
+                    <!-- <li class="list-group-item">Balance:{{user.balance | currency:"USD"}}</li> -->
+                    <li class="list-group-item">Date of joining:{{user.joinedDate | date:("longDate")}}</li>
                 </ul>
             </div>
         </div>
-       
     </li>
 </ul>
- 
+
 <h4 *ngIf="users?.length == 0">No User Found</h4>
-<!-- <h4 *ngIf="users.length == 0">No Usesr Found!</h4> --> 
+<!-- <h4 *ngIf="users.length == 0">No Usesr Found!</h4> -->
 
 <h4 *ngIf="!loaded">*******Loading Users******</h4>
