@@ -8,6 +8,7 @@ export interface User{
         city?: string,
         postalCode?: number
     },
-    image?:string
+    image?:string,
+    isActive?:boolean;
 }
 
